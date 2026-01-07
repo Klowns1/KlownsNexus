@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  backend:
+    image: frappe/erpnext:develop
+    platform: linux/amd64
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - .:/home/frappe/frappe-bench/apps/erpnext
+      - sites:/home/frappe/frappe-bench/sites
+      - logs:/home/frappe/frappe-bench/logs
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - REDIS_CACHE=redis:6379/1
+      - REDIS_QUEUE=redis:6379/0
+      - REDIS_SOCKETIO=redis:6379/2
+      - SOCKETIO_PORT=9000
+    command: ["bench", "serve", "--port", "8000", "--noreload"]
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: mariadb:10.6
+    platform: linux/amd64
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=erpnext
+    volumes:
+      - db-data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --skip-character-set-client-handshake
+
+  redis:
+    image: redis:6.2-alpine
+    platform: linux/amd64
+    volumes:
+      - redis-data:/data
+
+volumes:
+  sites:
+  logs:
+  db-data:
+  redis-data:

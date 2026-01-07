@@ -1,0 +1,83 @@
+/* KlownsNexus Office Suite Theme */
+
+:root {
+    --primary: #2c3e50;
+    --primary-light: #34495e;
+    --secondary: #e74c3c;
+    --accent: #3498db;
+    --background: #f4f6f9;
+    --surface: #ffffff;
+    --text-color: #2c3e50;
+    --border-color: #ecf0f1;
+    --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-stack) !important;
+    background-color: var(--background) !important;
+    color: var(--text-color) !important;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--surface) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.navbar-brand .app-logo {
+    height: 32px !important;
+    width: auto !important;
+}
+
+/* Sidebar */
+.layout-side-section {
+    background-color: var(--surface) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+/* Cards */
+.widget-group .deck-widget {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.widget-group .deck-widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-light) !important;
+    border-color: var(--primary-light) !important;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600 !important;
+    color: var(--primary) !important;
+}
+
+/* Links */
+a {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: underline !important;
+}
